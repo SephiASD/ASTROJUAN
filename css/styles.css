@@ -66,54 +66,12 @@ header {
     color: white;
 }
 
-nav {
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.logo {
-    display: flex;
-    align-items:flex-start
-}
-
-.logo img {
-    height: 14rem;
+.navbar-logo {
+    height: 60px;
     width: auto;
-    display: block;
 }
 
-.botonesnav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    list-style: none;
-    margin: 0;
-    padding: 1rem 1rem;
-}
 
-.botonesnav a {
-    display: inline-block;
-    text-decoration: none;
-    color: white;
-    padding: 1rem;
-    font-family: "Google Sans", sans-serif;
-    font-size: medium;
-    font-weight: 600;
-    margin: 1rem;
-    transition:
-        color 0.3s ease,
-        text-shadow 0.3s ease;
-}
-
-.botonesnav a:hover {
-    color: white;
-    text-shadow:
-        0 0 6px rgba(255, 255, 255, 0.9),
-        0 0 12px rgba(255, 255, 255, 0.6),
-        0 0 20px rgba(255, 255, 255, 0.4);
-}
 
 .redes {
     display: flex;
@@ -457,4 +415,8 @@ h1{
     display: block;
 
 }
-    
+
+.navbar {
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
