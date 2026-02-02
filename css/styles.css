@@ -36,18 +36,27 @@ body {
 }
 
 header {
-    min-height: 100vh;
+    min-height: 100svh;
     background-image: url("../assets/img/astromain.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.hero-contenido {
+    position: absolute;
+    top: 5rem;
+    right: 0.2rem;
+    z-index: 1;
 }
 
 .herotexto {
-    position: relative;
-    right: 4rem;
-    bottom: 20%;
+    padding-right: 4rem;
     text-align: right;
     color: white;
 }
@@ -64,6 +73,27 @@ header {
     margin: 0;
     font-weight: 700;
     color: white;
+}
+
+@media (max-width: 768px) {
+    .hero-contenido {
+        position: relative;
+        top: 0;
+        right: 0;
+        transform: none;
+        margin-top: 3rem;
+        text-align: center;
+    }
+
+    .herotitulo1 {
+        font-size: 1.1rem;
+        letter-spacing: 0.15em;
+    }
+
+    .herotitulo2 {
+        font-size: clamp(1.8rem, 7vw, 2.6rem);
+        line-height: 1.05;
+    }
 }
 
 .navbar-logo {
@@ -154,6 +184,8 @@ h1{
     flex-direction: column;
     gap: 1.5rem;
 }
+
+
 
 /* esto es para mis iconitos de los datos de contacto */
 
@@ -396,6 +428,7 @@ h1{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 2rem;
+    padding-top: 3rem;
 }
 
 .productoshop {
@@ -405,7 +438,8 @@ h1{
     border: 1px solid black;
     border-radius: 1rem;
     overflow: hidden;
-    padding-bottom: 1rem;
+    padding-bottom: 2rem;
+
 }
 
 .productoimg img {
@@ -419,4 +453,118 @@ h1{
 .navbar {
     padding-left: 3rem;
     padding-right: 3rem;
+    position: relative;
+    z-index: 10;
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 2rem 1.5rem;
+        margin-top: 6rem;
+    }
+
+    .redes {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+
+    .redestxt {
+        width: 100%;
+        text-align: center;
+        font-size: 1.5rem;
+        margin: 0 0 0.5rem 0;
+    }
+
+    .redes img {
+        width: 2rem;
+    }
+}
+
+/* configuracion para pagina contacto mobile */
+
+@media (max-width: 768px) {
+    .contactogrid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .contactoinfo {
+        order: 1;
+    }
+
+    .contactoform {
+        order: 2;
+    }
+}
+
+/* configuracion para página talleress mobile */
+
+@media (max-width: 768px) {
+    .talleresvideo {
+        margin: 3rem 0;
+        padding: 0 1rem;
+    }
+
+    .talleresvideo video {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .productos {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding-top: 2rem;
+    }
+
+    .productoshop {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .productoimg {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        overflow: hidden;
+    }
+
+    .productoimg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .productoshop h3 {
+        margin: 1.2rem 1rem;
+        text-align: center;
+        font-size: 1.1rem;
+    }
+
+    .productoshop .boton {
+        width: auto;
+        padding: 0.9rem 2rem;
+        margin: 1.2rem auto 1.8rem auto;
+    }
+}
+
+/* configuracion de la página index para mobile*/
+
+@media (max-width: 768px) {
+
+    .bloque,
+    .bloque2 {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "titulo"
+            "imagen"
+            "texto";
+    }
+
+    .bloque .imagen,
+    .bloque2 .imagen {
+        width: 100%;
+    }
 }
