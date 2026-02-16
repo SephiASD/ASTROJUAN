@@ -1,0 +1,67 @@
+/* configuracion del index */
+
+.contenedor {
+    max-width: 1400px;
+    padding: 0 1.5rem;
+    margin: 0 auto;
+}
+
+body {
+    background-color: white
+}
+
+h1{
+    color: dimgray;
+    font-size: 40px;
+}
+
+.bloque {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-areas:
+        "titulo titulo"
+        "imagen texto";
+    gap: 2rem;
+    align-items: start;
+    margin: 4rem 0;
+}
+
+.bloque2 {
+    grid-template-columns: 3fr 1fr;
+    grid-template-areas:
+        "titulo titulo"
+        "texto imagen";
+}
+
+.bloque .titulo {
+    grid-area: titulo;
+}
+
+.bloque .imagen {
+    grid-area: imagen;
+    width: 100%;
+    height: auto;
+}
+
+.bloque .texto {
+    grid-area: texto;
+}
+
+/* configuracion de la página index para mobile*/
+
+@media (max-width: 768px) {
+
+    .bloque,
+    .bloque2 {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "titulo"
+            "imagen"
+            "texto";
+    }
+
+    .bloque .imagen,
+    .bloque2 .imagen {
+        width: 100%;
+    }
+}

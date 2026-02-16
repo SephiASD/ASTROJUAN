@@ -1,0 +1,12 @@
+
+@use './variables';
+@use './mixin';
+@use './base';
+
+@use './pages/index';
+@use './pages/contacto';
+@use './pages/galeria';
+@use './pages/talleres';
+@use './pages/tienda';
+
+@use './reset/reset';

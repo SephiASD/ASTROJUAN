@@ -1,0 +1,124 @@
+@use './variables' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Smooch+Sans:wght@100..900&display=swap');
+
+.tipografiaGoogleSans{
+    font-family: $tipografiamain;
+}
+
+.tipografiaSmoochSans{
+     font-family: $tipografiabkp;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    animation: $animacionbody;
+    background-color: $colorfondobody;
+}
+
+
+@keyframes fadeInWhite { 
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+header {
+    min-height: 100svh;
+    background-image: url("../assets/img/astromain.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.hero-contenido {
+    position: absolute;
+    top: 5rem;
+    right: 0.2rem;
+    z-index: 1;
+}
+
+.herotexto {
+    padding-right: 4rem;
+    text-align: right;
+    color: white;
+}
+
+.herotitulo1 {
+    font-size: 2rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.herotitulo2 {
+    font-size: clamp(3rem, 6vw, 6rem);
+    margin: 0;
+    font-weight: 700;
+    color: white;
+}
+
+@media (max-width: 768px) {
+    .hero-contenido {
+        position: relative;
+        top: 0;
+        right: 0;
+        transform: none;
+        margin-top: 3rem;
+        text-align: center;
+    }
+
+    .herotitulo1 {
+        font-size: 1.1rem;
+        letter-spacing: 0.15em;
+    }
+
+    .herotitulo2 {
+        font-size: clamp(1.8rem, 7vw, 2.6rem);
+        line-height: 1.05;
+    }
+}
+
+.navbar-logo {
+    height: 60px;
+    width: auto;
+}
+
+
+
+.redes {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+
+}
+
+.redes img {
+    width: 3rem;
+    height: auto;
+}
+
+.redestxt {
+    font-size: 3rem;
+    font-weight: 600;
+    margin-right: auto;
+}
+
+footer {
+    margin-top: 12rem;
+    padding: 4rem 5rem;
+    box-sizing: border-box;
+}

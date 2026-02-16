@@ -512,6 +512,8 @@ h1{
     }
 }
 
+/* configuracion para pagina tienda mobile */
+
 @media (max-width: 768px) {
 
     .productos {
