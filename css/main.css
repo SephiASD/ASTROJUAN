@@ -18,6 +18,10 @@ body {
   background-color: white;
 }
 
+p {
+  font-size: 1.2rem;
+}
+
 @keyframes fadeInWhite {
   from {
     opacity: 0;
@@ -35,36 +39,31 @@ header {
   display: flex;
   flex-direction: column;
 }
-
-.hero-contenido {
+header .hero-contenido {
   position: absolute;
   top: 5rem;
   right: 0.2rem;
   z-index: 1;
 }
-
-.herotexto {
+header .herotexto {
   padding-right: 4rem;
   text-align: right;
   color: white;
 }
-
-.herotitulo1 {
+header .herotexto .herotitulo1 {
   font-size: 2rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   opacity: 0.8;
 }
-
-.herotitulo2 {
+header .herotexto .herotitulo2 {
   font-size: clamp(3rem, 6vw, 6rem);
   margin: 0;
   font-weight: 700;
   color: white;
 }
-
 @media (max-width: 768px) {
-  .hero-contenido {
+  header .hero-contenido {
     position: relative;
     top: 0;
     right: 0;
@@ -72,36 +71,19 @@ header {
     margin-top: 3rem;
     text-align: center;
   }
-  .herotitulo1 {
+  header .herotexto .herotitulo1 {
     font-size: 1.1rem;
     letter-spacing: 0.15em;
   }
-  .herotitulo2 {
+  header .herotexto .herotitulo2 {
     font-size: clamp(1.8rem, 7vw, 2.6rem);
     line-height: 1.05;
   }
 }
+
 .navbar-logo {
   height: 60px;
   width: auto;
-}
-
-.redes {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.redes img {
-  width: 3rem;
-  height: auto;
-}
-
-.redestxt {
-  font-size: 3rem;
-  font-weight: 600;
-  margin-right: auto;
 }
 
 footer {
@@ -109,9 +91,20 @@ footer {
   padding: 4rem 5rem;
   box-sizing: border-box;
 }
-
-p {
-  font-size: 1.2rem;
+footer .redes {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+}
+footer .redes img {
+  width: 3rem;
+  height: auto;
+}
+footer .redes .redestxt {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-right: auto;
 }
 
 /* configuracion del index */
@@ -139,88 +132,75 @@ h1 {
   align-items: start;
   margin: 4rem 0;
 }
-
-.bloque2 {
-  grid-template-columns: 3fr 1fr;
-  grid-template-areas: "titulo titulo" "texto imagen";
-}
-
 .bloque .titulo {
   grid-area: titulo;
 }
-
 .bloque .imagen {
   grid-area: imagen;
   width: 100%;
   height: auto;
 }
-
 .bloque .texto {
   grid-area: texto;
+}
+.bloque.bloque2 {
+  grid-template-columns: 3fr 1fr;
+  grid-template-areas: "titulo titulo" "texto imagen";
 }
 
 /* configuracion de la página index para mobile*/
 @media (max-width: 768px) {
-  .bloque,
-  .bloque2 {
+  .bloque {
     grid-template-columns: 1fr;
     grid-template-areas: "titulo" "imagen" "texto";
   }
-  .bloque .imagen,
-  .bloque2 .imagen {
+  .bloque .imagen {
     width: 100%;
   }
 }
 /* configuracion de contacto */
-.contactoinfo {
+.contactogrid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 4rem;
+  align-items: start;
+  margin: 6rem auto;
+}
+.contactogrid .contactoinfo {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  /* esto es para mis iconitos de los datos de contacto */
 }
-
-/* esto es para mis iconitos de los datos de contacto */
-.contactoitem {
+.contactogrid .contactoinfo .contactoitem {
   display: flex;
   align-items: center;
   gap: 1rem;
   color: dimgray;
   font-size: 1.1rem;
 }
-
-.contactoitem img {
+.contactogrid .contactoinfo .contactoitem img {
   width: 24px;
   height: 24px;
   object-fit: contain;
 }
-
-.contactogrid {
-  display: grid;
-  grid-template-columns: 1fr 1.3fr; /* info izquierda / form derecha */
-  gap: 4rem;
-  align-items: start;
-  margin: 6rem auto;
-}
-
-.contactoform form {
+.contactogrid .contactoform form {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
-
-.campo {
+.contactogrid .contactoform .campo {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-
-.campo label {
+.contactogrid .contactoform .campo label {
   font-size: 0.9rem;
   font-weight: 600;
   color: #333;
 }
-
-.campo input,
-.campo textarea {
+.contactogrid .contactoform .campo input,
+.contactogrid .contactoform .campo textarea {
   width: 100%;
   padding: 1rem 1.2rem;
   font-size: 1rem;
@@ -229,10 +209,24 @@ h1 {
   background-color: #ffffff;
   outline: none;
 }
-
-.campo textarea {
+.contactogrid .contactoform .campo textarea {
   min-height: 160px;
   resize: vertical;
+}
+.contactogrid {
+  /* configuracion para pagina contacto mobile */
+}
+@media (max-width: 768px) {
+  .contactogrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .contactogrid .contactoinfo {
+    order: 1;
+  }
+  .contactogrid .contactoform {
+    order: 2;
+  }
 }
 
 /* este botòn enviar en el formulario es estèticamente el mismo para la página contacto y talleres y para compras */
@@ -250,21 +244,18 @@ h1 {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
-
 .boton:hover {
   background-color: #222;
 }
-
-/* aunque esté disabled, no se ve gris. hay que cambiarlo cuando gane funcionalidad */
+.boton {
+  /* aunque esté disabled, no se ve gris. hay que cambiarlo cuando gane funcionalidad */
+}
 .boton:disabled {
   opacity: 1;
   cursor: not-allowed;
 }
 
-.contactoform button:hover {
-  background-color: #222;
-}
-
+/* accesibilidad */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -277,19 +268,6 @@ h1 {
   border: 0;
 }
 
-/* configuracion para pagina contacto mobile */
-@media (max-width: 768px) {
-  .contactogrid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
-  .contactoinfo {
-    order: 1;
-  }
-  .contactoform {
-    order: 2;
-  }
-}
 /* configuracion de galeria */
 .galeria {
   display: grid;
@@ -297,13 +275,11 @@ h1 {
   gap: 1.5rem;
   margin: 3rem 0;
 }
-
-.card {
+.galeria .card {
   overflow: hidden; /* esto es para que el zoom in no me rompa todo el grid */
   aspect-ratio: 3/2;
 }
-
-.card img {
+.galeria .card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -311,21 +287,20 @@ h1 {
   filter: grayscale(100%);
   transition: transform 1s ease, filter 1s ease;
 }
-
-.card:hover img {
+.galeria .card:hover img {
   transform: scale(1.1);
   filter: grayscale(0%);
-}
-
-/* galeria Mobile */
-@media (hover: none) {
-  .card img {
-    filter: grayscale(0%);
-  }
 }
 @media (max-width: 768px) {
   .galeria {
     grid-template-columns: 1fr;
+  }
+}
+
+/* galeria Mobile */
+@media (hover: none) {
+  .galeria .card img {
+    filter: grayscale(0%);
   }
 }
 /* configuracion de talleres */
@@ -333,6 +308,15 @@ h1 {
   display: flex;
   justify-content: center;
   margin: 6rem 10rem;
+}
+@media (max-width: 768px) {
+  .talleresvideo {
+    margin: 3rem 0;
+    padding: 0 1rem;
+  }
+  .talleresvideo video {
+    max-width: 100%;
+  }
 }
 
 .talleres {
@@ -343,8 +327,7 @@ h1 {
   gap: 3rem;
   align-items: stretch;
 }
-
-.tallerescard {
+.talleres .tallerescard {
   display: flex;
   flex-direction: column;
   border: 1px solid transparent;
@@ -355,56 +338,43 @@ h1 {
   box-shadow: 0 4px 5px rgb(238, 238, 238);
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
-
-.tallerescard:hover {
+.talleres .tallerescard:hover {
   border-color: black;
   box-shadow: 0 10px 15px 8px rgb(204, 204, 204);
   transform: translateY(-4px);
 }
-
-.tallerescard img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-.talleresimg {
+.talleres .tallerescard .talleresimg {
   aspect-ratio: 3/2;
   overflow: hidden;
 }
-
-.talleresimg img {
+.talleres .tallerescard .talleresimg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
-
-.tallerescard h3 {
+.talleres .tallerescard h3 {
   margin: 1rem;
   font-size: 1.3rem;
 }
-
-.tallerescard p {
+.talleres .tallerescard p {
   margin: 0 1rem;
   line-height: 1.5;
   flex-grow: 1;
 }
-
-.tallerescard .boton {
+.talleres .tallerescard .boton {
   padding: 0.8rem 1.5rem;
   font-size: 0.9rem;
   margin: 1.5rem auto 2rem auto;
   align-self: center;
   max-width: calc(100% - 2rem);
 }
-
 @media (max-width: 768px) {
   .talleres {
     grid-template-columns: 1fr;
   }
 }
+
 .formtalleres {
   max-width: 600px;
   margin: 4rem 0;
@@ -414,15 +384,6 @@ h1 {
 }
 
 /* configuracion para página talleres mobile */
-@media (max-width: 768px) {
-  .talleresvideo {
-    margin: 3rem 0;
-    padding: 0 1rem;
-  }
-  .talleresvideo video {
-    max-width: 100%;
-  }
-}
 /* configuracion de tienda */
 .productos {
   display: grid;
@@ -430,8 +391,7 @@ h1 {
   gap: 2rem;
   padding-top: 3rem;
 }
-
-.productoshop {
+.productos .productoshop {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -440,12 +400,34 @@ h1 {
   overflow: hidden;
   padding-bottom: 2rem;
 }
-
-.productoimg img {
+.productos .productoshop .productoimg {
+  width: 100%;
+  overflow: hidden;
+}
+.productos .productoshop .productoimg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+}
+.productos .productoshop h3 {
+  margin: 1rem 0;
+  text-align: center;
+  font-size: 1.4rem;
+  padding: 0 1rem;
+  word-wrap: break-word;
+}
+.productos .productoshop .boton {
+  width: auto;
+  padding: 0.9rem 2rem;
+  margin: 1.2rem auto 1.8rem auto;
+}
+@media (max-width: 768px) {
+  .productos {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding-top: 2rem;
+  }
 }
 
 .navbar {
@@ -455,14 +437,7 @@ h1 {
   z-index: 10;
 }
 
-.productoshop h3 {
-  margin: 1rem 0;
-  text-align: center;
-  font-size: 1.4rem;
-  padding: 0 1rem;
-  word-wrap: break-word;
-}
-
+/* configuracion para mobile footer */
 @media (max-width: 768px) {
   footer {
     padding: 2rem 1.5rem;
@@ -482,14 +457,6 @@ h1 {
   .redes img {
     width: 2rem;
   }
-}
-/* configuracion para pagina tienda mobile */
-@media (max-width: 768px) {
-  .productos {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding-top: 2rem;
-  }
   .productoshop {
     width: 100%;
     max-width: 420px;
@@ -498,7 +465,6 @@ h1 {
   .productoimg {
     width: 100%;
     aspect-ratio: 1/1;
-    overflow: hidden;
   }
   .productoimg img {
     width: 100%;
@@ -509,11 +475,6 @@ h1 {
     margin: 0.5rem 0;
     text-align: center;
     font-size: 1rem;
-  }
-  .productoshop .boton {
-    width: auto;
-    padding: 0.9rem 2rem;
-    margin: 1.2rem auto 1.8rem auto;
   }
 }
 

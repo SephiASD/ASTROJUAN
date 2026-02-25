@@ -10,7 +10,7 @@ body {
     background-color: white
 }
 
-h1{
+h1 {
     color: dimgray;
     font-size: 40px;
     margin-top: 4rem;
@@ -25,44 +25,42 @@ h1{
     gap: 2rem;
     align-items: start;
     margin: 4rem 0;
-}
 
-.bloque2 {
-    grid-template-columns: 3fr 1fr;
-    grid-template-areas:
-        "titulo titulo"
-        "texto imagen";
-}
+    .titulo {
+        grid-area: titulo;
+    }
 
-.bloque .titulo {
-    grid-area: titulo;
-}
+    .imagen {
+        grid-area: imagen;
+        width: 100%;
+        height: auto;
+    }
 
-.bloque .imagen {
-    grid-area: imagen;
-    width: 100%;
-    height: auto;
-}
+    .texto {
+        grid-area: texto;
+    }
 
-.bloque .texto {
-    grid-area: texto;
+    &.bloque2 {
+        grid-template-columns: 3fr 1fr;
+        grid-template-areas:
+            "titulo titulo"
+            "texto imagen";
+    }
 }
 
 /* configuracion de la página index para mobile*/
 
 @media (max-width: 768px) {
 
-    .bloque,
-    .bloque2 {
+    .bloque {
         grid-template-columns: 1fr;
         grid-template-areas:
             "titulo"
             "imagen"
             "texto";
-    }
 
-    .bloque .imagen,
-    .bloque2 .imagen {
-        width: 100%;
+        .imagen {
+            width: 100%;
+        }
     }
 }

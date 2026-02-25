@@ -5,6 +5,14 @@
     justify-content: center;
     margin: 6rem 10rem;
 
+    @media (max-width: 768px) {
+        margin: 3rem 0;
+        padding: 0 1rem;
+
+        video {
+            max-width: 100%;
+        }
+    }
 }
 
 .talleres {
@@ -14,69 +22,60 @@
     max-width: 1200px;
     gap: 3rem;
     align-items: stretch;
-}
 
-.tallerescard {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid transparent;
-    border-radius: 1.8rem;
-    overflow: hidden;
-    padding-bottom: 1rem;
-    background-color: white;
-    box-shadow: 0 4px 5px rgb(238, 238, 238);
-    transition:
-        border-color 0.3s ease,
-        box-shadow 0.3s ease,
-        transform 0.3s ease;
-}
+    .tallerescard {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid transparent;
+        border-radius: 1.8rem;
+        overflow: hidden;
+        padding-bottom: 1rem;
+        background-color: white;
+        box-shadow: 0 4px 5px rgb(238, 238, 238);
+        transition:
+            border-color 0.3s ease,
+            box-shadow 0.3s ease,
+            transform 0.3s ease;
 
-.tallerescard:hover {
-    border-color: black;
-    box-shadow: 0 10px 15px 8px rgb(204, 204, 204);
-    transform: translateY(-4px);
+        &:hover {
+            border-color: black;
+            box-shadow: 0 10px 15px 8px rgb(204, 204, 204);
+            transform: translateY(-4px);
+        }
 
-}
+        .talleresimg {
+            aspect-ratio: 3 / 2;
+            overflow: hidden;
 
-.tallerescard img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+        }
 
-.talleresimg {
-    aspect-ratio: 3 / 2;
-    overflow: hidden;
-}
+        h3 {
+            margin: 1rem;
+            font-size: 1.3rem;
+        }
 
-.talleresimg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-.tallerescard h3 {
-    margin: 1rem;
-    font-size: 1.3rem; 
-}
+        p {
+            margin: 0 1rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
 
-.tallerescard p {
-    margin: 0 1rem;
-    line-height: 1.5;
-    flex-grow: 1;
-}
+        .boton {
+            padding: 0.8rem 1.5rem;
+            font-size: 0.9rem;
+            margin: 1.5rem auto 2rem auto;
+            align-self: center;
+            max-width: calc(100% - 2rem);
+        }
+    }
 
-.tallerescard .boton {
-    padding: 0.8rem 1.5rem;
-    font-size: 0.9rem;
-    margin: 1.5rem auto 2rem auto;
-    align-self: center;
-    max-width: calc(100% - 2rem);
-}
-
-@media (max-width: 768px) {
-    .talleres {
+    @media (max-width: 768px) {
         grid-template-columns: 1fr;
     }
 }
@@ -90,14 +89,3 @@
 }
 
 /* configuracion para página talleres mobile */
-
-@media (max-width: 768px) {
-    .talleresvideo {
-        margin: 3rem 0;
-        padding: 0 1rem;
-    }
-
-    .talleresvideo video {
-        max-width: 100%;
-    }
-}

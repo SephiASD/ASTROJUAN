@@ -1,73 +1,86 @@
 /* configuracion de contacto */
 
-.contactoinfo {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-
-
-/* esto es para mis iconitos de los datos de contacto */
-
-.contactoitem {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    color: dimgray;
-    font-size: 1.1rem;
-}
-
-.contactoitem img {
-    width: 24px;
-    height: 24px;
-    object-fit: contain;
-}
-
 .contactogrid {
     display: grid;
-    grid-template-columns: 1fr 1.3fr; /* info izquierda / form derecha */
+    grid-template-columns: 1fr 1.3fr;
     gap: 4rem;
     align-items: start;
     margin: 6rem auto;
-}
 
-.contactoform form {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-}
+    .contactoinfo {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
 
-.campo {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
+        /* esto es para mis iconitos de los datos de contacto */
+        .contactoitem {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: dimgray;
+            font-size: 1.1rem;
 
-.campo label {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #333;
-}
+            img {
+                width: 24px;
+                height: 24px;
+                object-fit: contain;
+            }
+        }
+    }
 
-.campo input,
-.campo textarea {
-    width: 100%;
-    padding: 1rem 1.2rem;
-    font-size: 1rem;
-    border: 1px solid #999;
-    border-radius: 10px;
-    background-color: #ffffff;
-    outline: none;
-}
+    .contactoform {
 
-.campo textarea {
-    min-height: 160px;
-    resize: vertical;
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .campo {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            label {
+                font-size: 0.9rem;
+                font-weight: 600;
+                color: #333;
+            }
+
+            input,
+            textarea {
+                width: 100%;
+                padding: 1rem 1.2rem;
+                font-size: 1rem;
+                border: 1px solid #999;
+                border-radius: 10px;
+                background-color: #ffffff;
+                outline: none;
+            }
+
+            textarea {
+                min-height: 160px;
+                resize: vertical;
+            }
+        }
+    }
+
+    /* configuracion para pagina contacto mobile */
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+
+        .contactoinfo {
+            order: 1;
+        }
+
+        .contactoform {
+            order: 2;
+        }
+    }
 }
 
 /* este botòn enviar en el formulario es estèticamente el mismo para la página contacto y talleres y para compras */
-
 .boton {
     margin-top: 2rem;
     padding: 1.2rem;
@@ -81,22 +94,19 @@
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #222;
+    }
+
+    /* aunque esté disabled, no se ve gris. hay que cambiarlo cuando gane funcionalidad */
+    &:disabled {
+        opacity: 1;
+        cursor: not-allowed;
+    }
 }
 
-.boton:hover {
-    background-color: #222;
-}
-
-/* aunque esté disabled, no se ve gris. hay que cambiarlo cuando gane funcionalidad */
-.boton:disabled {
-    opacity: 1;
-    cursor: not-allowed;
-}
-
-.contactoform button:hover {
-    background-color: #222;
-}
-
+/* accesibilidad */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -107,21 +117,4 @@
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-
-/* configuracion para pagina contacto mobile */
-
-@media (max-width: 768px) {
-    .contactogrid {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-    }
-
-    .contactoinfo {
-        order: 1;
-    }
-
-    .contactoform {
-        order: 2;
-    }
 }
