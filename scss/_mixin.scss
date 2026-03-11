@@ -1,0 +1,33 @@
+/* Mixin para los Media Queries de 768px (Responsive) */
+/* Se aplica usando @include m.mobile en las páginas */
+@mixin mobile {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+/* Mixin para los botones del sitio (usado en contacto, talleres y tienda) */
+/* Centraliza el diseño de botones de la Escuela de Astrofotografía */
+@mixin boton-base {
+    margin-top: 2rem;
+    padding: 1.2rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    border: none;
+    border-radius: 999px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #222;
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+}

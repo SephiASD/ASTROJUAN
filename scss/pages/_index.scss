@@ -1,5 +1,7 @@
-/* configuracion del index */
+@use '../mixin' as m; 
+@use '../variables' as v;
 
+/* configuracion del index */
 .contenedor {
     max-width: 1400px;
     padding: 0 1.5rem;
@@ -7,7 +9,7 @@
 }
 
 body {
-    background-color: white
+    background-color: v.$colorfondobody;
 }
 
 h1 {
@@ -26,19 +28,13 @@ h1 {
     align-items: start;
     margin: 4rem 0;
 
-    .titulo {
-        grid-area: titulo;
-    }
-
+    .titulo { grid-area: titulo; }
     .imagen {
         grid-area: imagen;
         width: 100%;
         height: auto;
     }
-
-    .texto {
-        grid-area: texto;
-    }
+    .texto { grid-area: texto; }
 
     &.bloque2 {
         grid-template-columns: 3fr 1fr;
@@ -49,18 +45,19 @@ h1 {
 }
 
 /* configuracion de la página index para mobile*/
-
-@media (max-width: 768px) {
-
+@include m.mobile {
     .bloque {
         grid-template-columns: 1fr;
         grid-template-areas:
             "titulo"
             "imagen"
             "texto";
-
-        .imagen {
-            width: 100%;
+            
+        &.bloque2 {
+            grid-template-areas:
+                "titulo"
+                "imagen"
+                "texto";
         }
     }
 }

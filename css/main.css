@@ -1,5 +1,9 @@
 @charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Montserrat:ital,wght@0,500;1,500&display=swap");
+/* Mixin para los Media Queries de 768px (Responsive) */
+/* Se aplica usando @include m.mobile en las páginas */
+/* Mixin para los botones del sitio (usado en contacto, talleres y tienda) */
+/* Centraliza el diseño de botones de la Escuela de Astrofotografía */
 .tipografiaGoogleSans {
   font-family: "Montserrat", sans-serif;
 }
@@ -154,11 +158,10 @@ h1 {
     grid-template-columns: 1fr;
     grid-template-areas: "titulo" "imagen" "texto";
   }
-  .bloque .imagen {
-    width: 100%;
+  .bloque.bloque2 {
+    grid-template-areas: "titulo" "imagen" "texto";
   }
 }
-/* configuracion de contacto */
 .contactogrid {
   display: grid;
   grid-template-columns: 1fr 1.3fr;
@@ -170,7 +173,6 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  /* esto es para mis iconitos de los datos de contacto */
 }
 .contactogrid .contactoinfo .contactoitem {
   display: flex;
@@ -199,22 +201,18 @@ h1 {
   font-weight: 600;
   color: #333;
 }
-.contactogrid .contactoform .campo input,
-.contactogrid .contactoform .campo textarea {
+.contactogrid .contactoform .campo input, .contactogrid .contactoform .campo textarea {
   width: 100%;
-  padding: 1rem 1.2rem;
+  padding: 1rem;
   font-size: 1rem;
   border: 1px solid #999;
   border-radius: 10px;
-  background-color: #ffffff;
+  background-color: white;
   outline: none;
 }
 .contactogrid .contactoform .campo textarea {
   min-height: 160px;
   resize: vertical;
-}
-.contactogrid {
-  /* configuracion para pagina contacto mobile */
 }
 @media (max-width: 768px) {
   .contactogrid {
@@ -229,7 +227,6 @@ h1 {
   }
 }
 
-/* este botòn enviar en el formulario es estèticamente el mismo para la página contacto y talleres y para compras */
 .boton {
   margin-top: 2rem;
   padding: 1.2rem;
@@ -247,25 +244,15 @@ h1 {
 .boton:hover {
   background-color: #222;
 }
-.boton {
-  /* aunque esté disabled, no se ve gris. hay que cambiarlo cuando gane funcionalidad */
+.boton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 .boton:disabled {
   opacity: 1;
-  cursor: not-allowed;
-}
-
-/* accesibilidad */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  background-color: black;
+  cursor: default;
+  pointer-events: none;
 }
 
 /* configuracion de galeria */
@@ -309,14 +296,11 @@ h1 {
   justify-content: center;
   margin: 6rem 10rem;
 }
-@media (max-width: 768px) {
-  .talleresvideo {
-    margin: 3rem 0;
-    padding: 0 1rem;
-  }
-  .talleresvideo video {
-    max-width: 100%;
-  }
+.talleresvideo video {
+  max-width: 80%;
+  height: auto;
+  border-radius: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
 .talleres {
@@ -327,7 +311,8 @@ h1 {
   gap: 3rem;
   align-items: stretch;
 }
-.talleres .tallerescard {
+
+.tallerescard {
   display: flex;
   flex-direction: column;
   border: 1px solid transparent;
@@ -338,43 +323,60 @@ h1 {
   box-shadow: 0 4px 5px rgb(238, 238, 238);
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
-.talleres .tallerescard:hover {
+.tallerescard:hover {
   border-color: black;
   box-shadow: 0 10px 15px 8px rgb(204, 204, 204);
   transform: translateY(-4px);
 }
-.talleres .tallerescard .talleresimg {
+.tallerescard p {
+  margin: 0 1rem;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+.tallerescard h3 {
+  margin: 1rem;
+  font-size: 1.3rem;
+}
+.tallerescard .boton {
+  margin-top: 2rem;
+  padding: 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: none;
+  border-radius: 999px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.tallerescard .boton:hover {
+  background-color: #222;
+}
+.tallerescard .boton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.tallerescard .boton {
+  padding: 0.8rem 1.5rem;
+  font-size: 0.9rem;
+  margin: 1.5rem auto 2rem auto;
+  align-self: center;
+}
+
+.talleresimg {
   aspect-ratio: 3/2;
   overflow: hidden;
 }
-.talleres .tallerescard .talleresimg img {
+.talleresimg img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
-.talleres .tallerescard h3 {
-  margin: 1rem;
-  font-size: 1.3rem;
-}
-.talleres .tallerescard p {
-  margin: 0 1rem;
-  line-height: 1.5;
-  flex-grow: 1;
-}
-.talleres .tallerescard .boton {
-  padding: 0.8rem 1.5rem;
-  font-size: 0.9rem;
-  margin: 1.5rem auto 2rem auto;
-  align-self: center;
-  max-width: calc(100% - 2rem);
-}
-@media (max-width: 768px) {
-  .talleres {
-    grid-template-columns: 1fr;
-  }
-}
 
+/* Configuracion del Formulario */
 .formtalleres {
   max-width: 600px;
   margin: 4rem 0;
@@ -382,100 +384,170 @@ h1 {
   flex-direction: column;
   gap: 2rem;
 }
-
-/* configuracion para página talleres mobile */
-/* configuracion de tienda */
-.productos {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  padding-top: 3rem;
-}
-.productos .productoshop {
+.formtalleres .campo {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  border: 1px solid black;
-  border-radius: 1rem;
-  overflow: hidden;
-  padding-bottom: 2rem;
-}
-.productos .productoshop .productoimg {
+  align-items: flex-start;
+  gap: 0.5rem;
   width: 100%;
-  overflow: hidden;
 }
-.productos .productoshop .productoimg img {
+.formtalleres .campo label {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.formtalleres .campo input {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: white;
 }
-.productos .productoshop h3 {
-  margin: 1rem 0;
-  text-align: center;
-  font-size: 1.4rem;
-  padding: 0 1rem;
-  word-wrap: break-word;
+.formtalleres {
+  /* Botón ENVIAR: Estética activa pero deshabilitado */
 }
-.productos .productoshop .boton {
-  width: auto;
-  padding: 0.9rem 2rem;
-  margin: 1.2rem auto 1.8rem auto;
+.formtalleres .boton {
+  margin-top: 2rem;
+  padding: 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: none;
+  border-radius: 999px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
+.formtalleres .boton:hover {
+  background-color: #222;
+}
+.formtalleres .boton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.formtalleres .boton {
+  align-self: flex-start;
+}
+.formtalleres .boton:disabled {
+  opacity: 1;
+  background-color: black;
+  cursor: default;
+  pointer-events: none;
+}
+
 @media (max-width: 768px) {
-  .productos {
+  .talleresvideo {
+    margin: 3rem 0;
+    padding: 0 1rem;
+  }
+  .talleresvideo video {
+    max-width: 100%;
+  }
+  .talleres {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
-    padding-top: 2rem;
+  }
+  .formtalleres {
+    padding: 0 1rem;
   }
 }
-
-.navbar {
-  padding-left: 3rem;
-  padding-right: 3rem;
-  position: relative;
-  z-index: 10;
+/* configuracion de contacto */
+.contactogrid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 4rem;
+  align-items: start;
+  margin: 6rem auto;
 }
-
-/* configuracion para mobile footer */
+.contactogrid .contactoinfo {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  /* esto es para mis iconitos de los datos de contacto */
+}
+.contactogrid .contactoinfo .contactoitem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: dimgray;
+  font-size: 1.1rem;
+}
+.contactogrid .contactoinfo .contactoitem img {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+.contactogrid .contactoform form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.contactogrid .contactoform .campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.contactogrid .contactoform .campo label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+}
+.contactogrid .contactoform .campo input, .contactogrid .contactoform .campo textarea {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  border: 1px solid #999;
+  border-radius: 10px;
+  background-color: white;
+  outline: none;
+}
+.contactogrid .contactoform .campo textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+.contactogrid {
+  /* configuracion para pagina contacto mobile */
+}
 @media (max-width: 768px) {
-  footer {
-    padding: 2rem 1.5rem;
-    margin-top: 6rem;
+  .contactogrid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
   }
-  .redes {
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.8rem;
+  .contactogrid .contactoinfo {
+    order: 1;
   }
-  .redestxt {
-    width: 100%;
-    text-align: center;
-    font-size: 1.5rem;
-    margin: 0 0 0.5rem 0;
+  .contactogrid .contactoform {
+    order: 2;
   }
-  .redes img {
-    width: 2rem;
-  }
-  .productoshop {
-    width: 100%;
-    max-width: 420px;
-    margin: 0 auto;
-  }
-  .productoimg {
-    width: 100%;
-    aspect-ratio: 1/1;
-  }
-  .productoimg img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .productoshop h3 {
-    margin: 0.5rem 0;
-    text-align: center;
-    font-size: 1rem;
-  }
+}
+
+/* este botòn enviar en el formulario es estèticamente el mismo para la página contacto y talleres y para compras */
+.boton {
+  margin-top: 2rem;
+  padding: 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: none;
+  border-radius: 999px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.boton:hover {
+  background-color: #222;
+}
+.boton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.boton:disabled {
+  opacity: 1;
+  background-color: black;
+  cursor: default;
+  pointer-events: none;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,3 +1,6 @@
+@use '../variables' as v;
+@use '../mixin' as m;
+
 /* configuracion de talleres */
 
 .talleresvideo {
@@ -5,13 +8,11 @@
     justify-content: center;
     margin: 6rem 10rem;
 
-    @media (max-width: 768px) {
-        margin: 3rem 0;
-        padding: 0 1rem;
-
-        video {
-            max-width: 100%;
-        }
+    video {
+        max-width: 80%;
+        height: auto;
+        border-radius: 1.5rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 }
 
@@ -22,70 +23,111 @@
     max-width: 1200px;
     gap: 3rem;
     align-items: stretch;
+}
 
-    .tallerescard {
-        display: flex;
-        flex-direction: column;
-        border: 1px solid transparent;
-        border-radius: 1.8rem;
-        overflow: hidden;
-        padding-bottom: 1rem;
-        background-color: white;
-        box-shadow: 0 4px 5px rgb(238, 238, 238);
-        transition:
-            border-color 0.3s ease,
-            box-shadow 0.3s ease,
-            transform 0.3s ease;
+.tallerescard {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid transparent;
+    border-radius: 1.8rem;
+    overflow: hidden;
+    padding-bottom: 1rem;
+    background-color: v.$colorfondobody;
+    box-shadow: 0 4px 5px rgb(238, 238, 238);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
 
-        &:hover {
-            border-color: black;
-            box-shadow: 0 10px 15px 8px rgb(204, 204, 204);
-            transform: translateY(-4px);
-        }
-
-        .talleresimg {
-            aspect-ratio: 3 / 2;
-            overflow: hidden;
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-            }
-        }
-
-        h3 {
-            margin: 1rem;
-            font-size: 1.3rem;
-        }
-
-        p {
-            margin: 0 1rem;
-            line-height: 1.5;
-            flex-grow: 1;
-        }
-
-        .boton {
-            padding: 0.8rem 1.5rem;
-            font-size: 0.9rem;
-            margin: 1.5rem auto 2rem auto;
-            align-self: center;
-            max-width: calc(100% - 2rem);
-        }
+    &:hover {
+        border-color: black;
+        box-shadow: 0 10px 15px 8px rgb(204, 204, 204);
+        transform: translateY(-4px);
     }
 
-    @media (max-width: 768px) {
-        grid-template-columns: 1fr;
+    p {
+        margin: 0 1rem;
+        line-height: 1.6;
+        flex-grow: 1; 
+    }
+
+    h3 {
+        margin: 1rem;
+        font-size: 1.3rem; 
+    }
+
+    .boton {
+        @include m.boton-base;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        margin: 1.5rem auto 2rem auto;
+        align-self: center;
     }
 }
 
+.talleresimg {
+    aspect-ratio: 3 / 2;
+    overflow: hidden;
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+/* Configuracion del Formulario */
 .formtalleres {
     max-width: 600px;
-    margin: 4rem 0;
+    margin: 4rem 0; 
     display: flex;
     flex-direction: column;
     gap: 2rem;
+
+    .campo {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+        width: 100%;
+
+        label {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: v.$colorfondobody;
+        }
+    }
+
+    /* Botón ENVIAR: Estética activa pero deshabilitado */
+    .boton {
+        @include m.boton-base;
+        align-self: flex-start;
+
+        &:disabled {
+            opacity: 1;
+            background-color: black;
+            cursor: default;
+            pointer-events: none;
+        }
+    }
 }
 
-/* configuracion para página talleres mobile */
+@include m.mobile {
+    .talleresvideo {
+        margin: 3rem 0;
+        padding: 0 1rem;
+        video { max-width: 100%; }
+    }
+
+    .talleres {
+        grid-template-columns: 1fr;
+    }
+
+    .formtalleres {
+        padding: 0 1rem;
+    }
+}

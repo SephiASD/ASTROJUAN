@@ -1,5 +1,7 @@
-/* configuracion de galeria */
+@use '../mixin' as m; 
+@use '../variables' as v;
 
+/* configuracion de galeria */
 .galeria {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -16,9 +18,7 @@
             object-fit: cover;
             display: block;
             filter: grayscale(100%);
-            transition:
-            transform 1s ease,
-            filter 1s ease;
+            transition: transform 1s ease, filter 1s ease;
         }
 
         &:hover img {
@@ -27,7 +27,7 @@
         }
     }
 
-    @media (max-width: 768px) {
+    @include m.mobile {
         grid-template-columns: 1fr;
     }
 }
