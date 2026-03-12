@@ -1,5 +1,5 @@
 @use './variables' as *;
-
+@use './mixin' as m;
 @import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Montserrat:ital,wght@0,500;1,500&display=swap');
 
 .tipografiaGoogleSans {
@@ -32,6 +32,8 @@ p {
         opacity: 1;
     }
 }
+
+
 
 header {
     min-height: 100svh;
@@ -120,4 +122,32 @@ footer {
             margin-right: auto;
         }
     }
+}
+
+@include m.mobile {
+
+    footer {
+        padding: 3rem 1.5rem;
+        margin-top: 6rem;
+    }
+
+    footer .redes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    footer .redes .redestxt {
+        width: 100%;
+        margin-right: 0;
+        font-size: 1.8rem;
+    }
+
+    footer .redes img {
+        width: 2.2rem;
+    }
+
 }
